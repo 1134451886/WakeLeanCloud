@@ -32,9 +32,9 @@ jobs:
       env: 
         $CONFIG_SITE: ${{ secrets.Site }} # 读取评论后台地址
       run: | 
+        curl $CONFIG_SITE
         python run.py ${{ secrets.Site }}
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
-        curl $CONFIG_SITE
     - name: Commit #更新日志到GitHub仓库
       run: |
         git config --global user.email AutoWakeUp@email.com
